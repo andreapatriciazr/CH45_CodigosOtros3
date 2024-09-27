@@ -8,28 +8,35 @@ const productos = [
   {nombre: "Zapato rojo", tipo: "zapato", color: "rojo", img: "./zapato-rojo.jpg"}
 ]
 
-const li = document.getElementsByName("lista-de-productos")
-const $i = document.querySelector('.input');
+// Se está utilizando un Id no un Name y agregarle un Id al input
+const li = document.getElementById("lista-de-productos")
+const $i = document.getElementById("color-tipo");
 
+// Se agregan ; donde sean necesarias
+function mostrarProductos(productos) {
 for (let i = 0; i < productos.length; i++) {
-  var d = document.createElement("div")
-  d.classList.add("producto")
+  var d = document.createElement("div");
+  d.classList.add("producto");
 
   var ti = document.createElement("p")
-  ti.classList.add("titulo")
-  ti.textContent = productos[i].nombre
+  ti.classList.add("titulo");
+  ti.textContent = productos[i].nombre;
   
   var imagen = document.createElement("img");
   imagen.setAttribute('src', productos[i].img);
 
-  d.appendChild(ti)
-  d.appendChild(imagen)
+  d.appendChild(ti);
+  d.appendChild(imagen);
 
-  li.appendChild(d)
+  li.appendChild(d);
+}
 }
 
-displayProductos(productos)
+// Mostrar todos los productos 
+mostrarProductos(productos);
+
 const botonDeFiltro = document.querySelector("button");
+
 
 botonDeFiltro.onclick = function() {
   while (li.firstChild) {
@@ -40,21 +47,23 @@ botonDeFiltro.onclick = function() {
   console.log(texto);
   const productosFiltrados = filtrado(productos, texto );
 
+ mostrarProductos(productosFiltrados);
+
   for (let i = 0; i < productosFiltrados.length; i++) {
-    var d = document.createElement("div")
-    d.classList.add("producto")
+    var d = document.createElement("div");
+    d.classList.add("producto");
   
-    var ti = document.createElement("p")
-    ti.classList.add("titulo")
-    ti.textContent = productosFiltrados[i].nombre
+    var ti = document.createElement("p");
+    ti.classList.add("titulo");
+    ti.textContent = productosFiltrados[i].nombre;
     
     var imagen = document.createElement("img");
     imagen.setAttribute('src', productosFiltrados[i].img);
   
-    d.appendChild(ti)
-    d.appendChild(imagen)
+    d.appendChild(ti);
+    d.appendChild(imagen);
   
-    li.appendChild(d)
+    li.appendChild(d);
   }
 }
 
